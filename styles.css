@@ -1,0 +1,60 @@
+.collection li {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem;
+    
+    }
+    
+.collection li:last-child {
+    border-bottom: none;
+}
+
+.noteBlock{
+    position: relative;
+    float:left;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row;
+}
+.colIzq{
+    position: relative;
+    float:left;
+    width: calc(100% - 50px);
+    height: auto;
+}
+.colIzq div:first-child{
+    font-size: 1.5em;
+    color: #1E88E5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+.colIzq div:last-child{
+    font-size: 1em;
+    color:grey;
+}
+.colDer{
+    position: relative;
+    float:left;
+    max-width: 50px;
+    min-width: 50px;
+    height: auto;
+    background-image: url(tacho.png);
+    background-size: 70% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+h4{
+    color:#1E88E5;
+}
+
+
+.modal-footer a{
+    font-weight: 900;
+    font-size: 1.2em;
+}
