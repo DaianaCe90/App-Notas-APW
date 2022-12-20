@@ -1,25 +1,33 @@
 const CACHE_NAME = 'cache-1';
+
 self.addEventListener('install', evento => {
     console.log( evento );
 
-    const respCache = caches.open(CACHE_NAME).then( cache => {
+    const cache = caches.open(CACHE_NAME).then( cache => {
         return cache.addAll([
             'app.js',
             'index.html',
-            'icons',
+            'tacho.png',
+            'styles.css',
         ])
     })
-    evento.waitUntil( respCache );
+    evento.waitUntil( cache );
 
 })
 self.addEventListener( 'fetch', evento => {
-    console.log ( evento.request );
-    const respuesta = fetch ( evento.request ).then ( resNet => {
-        return respNet;
-    }).catch( error => {
-        console.log(error);
-        return caches.match( evento.request );
-    })
 
-    evento.respondWith(respuesta);
-})
+    const respuestaCache = caches.match(evento.request).then( res =>{
+        if(res) {
+            return res;
+        } else {
+            return fetch( evento.request).then (respuesta => {
+
+                caches.open( CACHE_NAME ).then( cache => {
+                    cache.put(evento.request, respuesta)
+                })
+                return respuesta.clone()
+            })
+        }
+    })
+    evento.respondWith(respuestaCache);
+}) 
