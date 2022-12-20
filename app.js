@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* - FUNCION 1:  Obtiene el texto del textArea y guarda en el texto en el array - */
 btnSave.addEventListener('click', ()=>{
-  let fecha = new Date ().toLocaleDateString();
+  let getFecha = new Date();
+  //agregar fecha y hora
+  let dia = getFecha.getDate() + '/' + (getFecha.getMonth()+1) + '/' + getFecha.getFullYear();
+  let hora = getFecha.getHours() + ':' + getFecha.getMinutes() + ':' + getFecha.getSeconds(); 
+  let fecha = dia + ', ' + hora;
+ 
+
   let idNuevo=0;
   if(lista.length>0){
     idNuevo=parseInt(lista[lista.length-1].id)+1;
@@ -90,6 +96,7 @@ function renderizarNotas(array){
     });
   }
 }
+
 function borrarNotas(id){
   for(let i = 0;i<lista.length;i++){
     if(lista[i].id==id){
@@ -98,3 +105,12 @@ function borrarNotas(id){
   }
   guardarNotas(lista);
 }
+
+//Borrar Todas las notas
+
+const btnBorrar = document.querySelector('#botonBorrar');
+btnBorrar.addEventListener('click', () =>{
+  lista = [];
+  localStorage.removeItem('notasLocalS');
+  renderizarNotas(lista);
+})

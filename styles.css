@@ -1,3 +1,9 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .collection li {
     width: 100%;
     height: auto;
@@ -57,4 +63,22 @@ h4{
 .modal-footer a{
     font-weight: 900;
     font-size: 1.2em;
+}
+
+#botonBorrar{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 2px solid rgb(180, 13, 13);
+    font-weight: bold;
+    color:rgb(180, 13, 13);
+    padding: 10px;
+}
+
+#botonBorrar:hover{
+    background-color: rgb(180, 13, 13);
+    border: 2px solid white;
+    font-weight: bold;
+    color:rgb(255, 255, 255);
+    padding: 10px;
+    cursor: pointer;
 }
